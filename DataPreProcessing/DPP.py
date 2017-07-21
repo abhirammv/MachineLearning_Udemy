@@ -77,6 +77,7 @@ def EncodeCatData(array, type = "indep"):
 #Feature Scaling
 #Input is the array of features in which scaling has to be done
 #Returns the scaled array
+
 def FeatureScaler(array):
     from sklearn.preprocessing import StandardScaler
     SS = StandardScaler();
