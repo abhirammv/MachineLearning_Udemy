@@ -86,6 +86,7 @@ def FeatureScaler(array):
 
 #Splitting the data into train/test data
 #There is a deprecation warning for the sklearn.cross_validation
+
 def TrainTestSplit(array):
     from sklearn.cross_validation import train_test_split
     array_tr, array_te = train_test_split(array, test_size=0.2, random_state=0)
