@@ -57,6 +57,8 @@ if __name__ == "__main__":
     dataset = read_file("50_Startups")
     X, y = get_InOutparams(dataset)
     X = EncodeCatData(X)
+    #Avoiding the dummy variable trap
+    X = X[:, 1:]
     X_tr, X_te = TrainTestSplit(X)
     y_tr, y_te = TrainTestSplit(y)
     regressor_fit = LinReg(X_tr, y_tr)
@@ -64,6 +66,8 @@ if __name__ == "__main__":
 
     #Backward elimintation process
     import statsmodels.formula.api as sm
+
+    #Setting the significance level of 5%
 
     #Adding a column of ones to the act as the intercept
     X = np.append(arr=np.ones((50,1)).astype(int), values=X, axis=1)
