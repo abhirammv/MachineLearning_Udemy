@@ -26,14 +26,25 @@ def LinReg(in_data, out_data):
     regressor.fit(in_data, out_data)
     return regressor
 
-def PolynomialReg(in_data, out_data, deg=2):
+def PolynomialFeatures(in_data, deg=2):
     from sklearn.preprocessing import PolynomialFeatures
-    data_modifier = PolynomialFeatures(degree=2)
+    data_modifier = PolynomialFeatures(degree=deg)
     in_data_poly = data_modifier.fit_transform(in_data)
+    return in_data_poly
 
-    #Considering in_data_poly as the new independent variable matrix, perform linear regression
-    poly_reg = LinReg(in_data_poly, out_data)
-    return poly_reg
+def Pred(test_data, model):
+    y_pred = model.predict(test_data)
+    return y_pred
+
+
+def visualize(in_data, out_data, model):
+    plt.scatter(in_data, out_data, color='red')
+    plt.plot(in_data, Pred(in_data, model), color='blue')
+    plt.title('Truth or Bluff')
+    plt.xlabel('Position level')
+    plt.ylabel('Salary')
+    plt.show()
+
 
 if __name__ == "__main__":
     dataset = read_file("Position_Salaries")
@@ -45,13 +56,15 @@ if __name__ == "__main__":
     #Fitting the linear regression model
     regressor_lin = LinReg(X, y)
 
-    #Fitting the polynomial regression
-    regressor_poly = PolynomialReg(X, y, deg=4)
+    #Visualising the linear model
+    visualize(X, y, regressor_lin)
 
+    #Fitting the polynomial regression model
+    X_poly = PolynomialFeatures(X, deg=2)
+    regressor_poly = LinReg(X_poly, y)
 
-
-
-
-
-
-
+    #visualizing the polynomial regression model
+    plt.scatter(X, y, color='red')
+    plt.plot(X, regressor_poly.predict(X_poly), color='blue')
+    plt.title('Truth or Bluff')
+    plt.show()
