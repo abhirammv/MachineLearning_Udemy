@@ -77,15 +77,3 @@ if __name__ == "__main__":
 
     X_opt = X[:, [0, 3]]
     print(sm.OLS(endog=y, exog=X_opt).fit().summary())
-
-
-
-
-
-
-
-
-
-
-
-
