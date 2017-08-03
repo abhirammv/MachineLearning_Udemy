@@ -76,4 +76,7 @@ if __name__ == "__main__":
     X = np.append(arr=np.ones((50,1)).astype(int), values=X, axis=1)
 
     X_opt = X[:, [0, 3]]
-    print(sm.OLS(endog=y, exog=X_opt).fit().summary())
+    #X_opt = X[:, [0, 1, 2, 3, 4, 5]]
+    #print(sm.OLS(endog=y, exog=X_opt).fit().summary())
+    reg_ols = sm.OLS(endog=y, exog=X_opt).fit()
+    print(reg_ols.summary())
