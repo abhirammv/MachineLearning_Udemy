@@ -34,6 +34,8 @@ def EncodeCatData(array, type = "indep"):
 
     from sklearn.preprocessing import OneHotEncoder
     OHE = OneHotEncoder(categorical_features=[3]);
+    #This puts the categorical variables to the beginning of the array
+    #Non-categorical variables are moved to the right
     array = OHE.fit_transform(array).toarray()
     return array
 
@@ -57,6 +59,7 @@ if __name__ == "__main__":
     dataset = read_file("50_Startups")
     X, y = get_InOutparams(dataset)
     X = EncodeCatData(X)
+
     #Avoiding the dummy variable trap
     X = X[:, 1:]
     X_tr, X_te = TrainTestSplit(X)
@@ -64,7 +67,7 @@ if __name__ == "__main__":
     regressor_fit = LinReg(X_tr, y_tr)
     y_pred = LinPred(X_te, regressor_fit)
 
-    #Backward elimintation process
+    #Backward elimintation process - Homework
     import statsmodels.formula.api as sm
 
     #Setting the significance level of 5%
