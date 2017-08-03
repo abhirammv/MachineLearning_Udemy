@@ -26,11 +26,14 @@ def LinReg(in_data, out_data):
     regressor.fit(in_data, out_data)
     return regressor
 
-def PolynomialReg(in_data, out_data):
+def PolynomialReg(in_data, out_data, deg=2):
     from sklearn.preprocessing import PolynomialFeatures
-    regressor = PolynomialFeatures(degree=2) #For modifying the independent variable
-    in_data_poly = regressor.fit_transform(in_data)
-    regressor.fit(in_data_poly, out_data)
+    data_modifier = PolynomialFeatures(degree=2)
+    in_data_poly = data_modifier.fit_transform(in_data)
+
+    #Considering in_data_poly as the new independent variable matrix, perform linear regression
+    poly_reg = LinReg(in_data_poly, out_data)
+    return poly_reg
 
 if __name__ == "__main__":
     dataset = read_file("Position_Salaries")
@@ -41,9 +44,12 @@ if __name__ == "__main__":
 
     #Fitting the linear regression model
     regressor_lin = LinReg(X, y)
-    from sklearn.preprocessing import PolynomialFeatures
-    reg = PolynomialFeatures(degree=4)
-    X_poly = reg.fit_transform(X)
+
+    #Fitting the polynomial regression
+    regressor_poly = PolynomialReg(X, y, deg=4)
+
+
+
 
 
 
