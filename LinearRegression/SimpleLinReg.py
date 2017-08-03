@@ -56,10 +56,10 @@ def LinPred(test_set, lin_model):
     return y_pred
 
 #Visualize the predictions by creating a scatter plot
-def visualize(in_data, out_data, model, train_data):
+def visualize(in_data, out_data, model):
     plt.scatter(in_data, out_data, color='red')
-    plt.plot(in_data, LinPred(train_data, model), color='blue')
-    plt.title('Salary vs Experience (Training set)')
+    plt.plot(in_data, LinPred(in_data, model), color='blue')
+    plt.title('Salary vs Experience')
     plt.xlabel('Years of Experience')
     plt.ylabel('Salary')
     plt.show()
@@ -72,8 +72,8 @@ if __name__ == "__main__":
     y_tr, y_te = TrainTestSplit(y)
     regressor_fit = LinReg(X_tr, y_tr)
     predictions = LinPred(X_te, regressor_fit)
-    visualize(X_tr, y_tr, regressor_fit, X_tr)
-    visualize(X_te, y_te, regressor_fit, X_te)
+    visualize(X_tr, y_tr, regressor_fit)
+    visualize(X_te, y_te, regressor_fit)
 
 
 
