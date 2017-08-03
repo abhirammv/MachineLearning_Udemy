@@ -55,7 +55,7 @@ def EncodeCatData(array, type = "indep"):
     #After encoding, they have to be converted into dummy variables
     #Else the linear model will think of them as actual values and a higher priority might be given
     # to the category with the largest representative value.
-    #If the type is independant, only label encoding is sufficient
+    #If the type is dependant, only label encoding is sufficient
 
     #Assumes that the first column has categorical variables
 
@@ -91,7 +91,6 @@ def TrainTestSplit(array):
     from sklearn.cross_validation import train_test_split
     array_tr, array_te = train_test_split(array, test_size=0.2, random_state=0)
     return array_tr, array_te
-
 
 
 if __name__ == "__main__":

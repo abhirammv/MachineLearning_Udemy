@@ -32,11 +32,6 @@ def PolynomialReg(in_data, out_data):
     in_data_poly = regressor.fit_transform(in_data)
     regressor.fit(in_data_poly, out_data)
 
-
-
-
-
-
 if __name__ == "__main__":
     dataset = read_file("Position_Salaries")
     X, y = get_InOutparams(dataset)
