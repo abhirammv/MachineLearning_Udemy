@@ -56,4 +56,9 @@ if __name__ == "__main__":
     SVRegressor = SVR(X, y)
     visualize(X, y, SVRegressor)
 
+    #An example showing a prediction when there is scaling:
+
+
+
+
 
