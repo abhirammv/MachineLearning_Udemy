@@ -37,6 +37,11 @@ def Pred(test_data, model):
     pred = model.predict(test_data)
     return pred
 
+def GetConfMatrix(actual_values, pred_values):
+    from sklearn.metrics import confusion_matrix
+    cm = confusion_matrix(actual_values, pred_values)
+    return cm
+
 if __name__ == "__main__":
     dataset = read_file("Social_Network_Ads")
     X, y = get_InOutparams(dataset)
@@ -45,5 +50,7 @@ if __name__ == "__main__":
     X_tr, X_te = TrainTestSplit(X)
     y_tr, y_te = TrainTestSplit(y)
     LogRegClassifier = LogReg(X_tr, y_tr)
-
+    y_pred = Pred(X_te, LogRegClassifier)
+    ConfMtx = GetConfMatrix(y_te, y_pred)
+    print(ConfMtx)
 
