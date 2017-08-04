@@ -28,8 +28,14 @@ def TrainTestSplit(array):
     return array_tr, array_te
 
 def LogReg(in_data, out_data):
-    from sklearn
+    from sklearn.linear_model import LogisticRegression
+    classifier = LogisticRegression()
+    classifier.fit(in_data, out_data)
+    return classifier
 
+def Pred(test_data, model):
+    pred = model.predict(test_data)
+    return pred
 
 if __name__ == "__main__":
     dataset = read_file("Social_Network_Ads")
@@ -38,5 +44,6 @@ if __name__ == "__main__":
     X = FeatureScaler(X)
     X_tr, X_te = TrainTestSplit(X)
     y_tr, y_te = TrainTestSplit(y)
+    LogRegClassifier = LogReg(X_tr, y_tr)
 
 
