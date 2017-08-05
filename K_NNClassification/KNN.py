@@ -55,9 +55,9 @@ def visualize(in_data, out_data, model, mode):
         plt.scatter(X_set[y_set == j, 0], X_set[y_set == j, 1],
                     c=ListedColormap(('red', 'green'))(i), label=j)
     if(mode=="training"):
-        plt.title('Logistic Regression (Training set)')
+        plt.title('KNN Classification (Training set)')
     elif(mode=="test"):
-        plt.title('Logistic Regression (Test set)')
+        plt.title('KNN Classification (Test set)')
     plt.xlabel('Age')
     plt.ylabel('Estimated Salary')
     plt.legend()
