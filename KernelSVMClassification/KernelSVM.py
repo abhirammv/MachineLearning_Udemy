@@ -55,9 +55,9 @@ def visualize(in_data, out_data, model, mode):
         plt.scatter(X_set[y_set == j, 0], X_set[y_set == j, 1],
                     c=ListedColormap(('red', 'green'))(i), label=j)
     if(mode=="training"):
-        plt.title('SVM Classification (Training set)')
+        plt.title('Kernel SVM Classification (Training set)')
     elif(mode=="test"):
-        plt.title('SVM Classification (Test set)')
+        plt.title('Kernel SVM Classification (Test set)')
     plt.xlabel('Age')
     plt.ylabel('Estimated Salary')
     plt.legend()
