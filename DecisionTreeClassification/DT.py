@@ -70,9 +70,7 @@ if __name__ == "__main__":
     X = FeatureScaler(X)
     X_tr, X_te = TrainTestSplit(X)
     y_tr, y_te = TrainTestSplit(y)
-
     DTClassifier = DTClassify(X_tr, y_tr)
-
     y_pred = Pred(X_te, DTClassifier)
     ConfMtx = GetConfMatrix(y_te, y_pred)
     print(ConfMtx)
