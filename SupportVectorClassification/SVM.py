@@ -27,9 +27,9 @@ def TrainTestSplit(array):
     array_tr, array_te = train_test_split(array, test_size=0.2, random_state=0)
     return array_tr, array_te
 
-def KNNClassify(in_data, out_data):
-    from sklearn.neighbors import KNeighborsClassifier
-    classifier = KNeighborsClassifier(n_neighbors=5, metric='minkowski', p=2)
+def SVM(in_data, out_data):
+    from sklearn.svm import SVC
+    classifier = SVC(kernel='linear')
     classifier.fit(in_data, out_data)
     return classifier
 
@@ -55,9 +55,9 @@ def visualize(in_data, out_data, model, mode):
         plt.scatter(X_set[y_set == j, 0], X_set[y_set == j, 1],
                     c=ListedColormap(('red', 'green'))(i), label=j)
     if(mode=="training"):
-        plt.title('KNN Classification (Training set)')
+        plt.title('SVM Classification (Training set)')
     elif(mode=="test"):
-        plt.title('KNN Classification (Test set)')
+        plt.title('SVM Classification (Test set)')
     plt.xlabel('Age')
     plt.ylabel('Estimated Salary')
     plt.legend()
@@ -70,9 +70,9 @@ if __name__ == "__main__":
     X = FeatureScaler(X)
     X_tr, X_te = TrainTestSplit(X)
     y_tr, y_te = TrainTestSplit(y)
-    KNNClassifier = KNNClassify(X_tr, y_tr)
-    y_pred = Pred(X_te, KNNClassifier)
+    SVMClassifier = SVM(X_tr, y_tr)
+    y_pred = Pred(X_te, SVMClassifier)
     ConfMtx = GetConfMatrix(y_te, y_pred)
     print(ConfMtx)
-    visualize(X_tr, y_tr, KNNClassifier, "training")
-    visualize(X_te, y_te, KNNClassifier, "test")
+    visualize(X_tr, y_tr, SVMClassifier, "training")
+    visualize(X_te, y_te, SVMClassifier, "test")
