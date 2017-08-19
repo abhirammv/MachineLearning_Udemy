@@ -7,7 +7,7 @@ def read_file(file_name):
     return dataset
 
 def getParams(data):
-    X = data.iloc[:,:].values
+    X = data.iloc[:, :].values
     return X
 
 def ElbowMethod(array):
@@ -55,6 +55,7 @@ if __name__ == "__main__":
     k = int(input("Input the K value: "))
     data_clusters, k_meansAlg = ClusterData(X, k)
     visualize(array=X, clusters=data_clusters, k_meansAlg=k_meansAlg)
+
 
 
 

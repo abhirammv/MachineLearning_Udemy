@@ -12,6 +12,7 @@ def getParams(data):
 
 def DendogramMethod(array):
     import scipy.cluster.hierarchy as sch
+    #ward method helps in determining the within cluster variance
     dendogram = sch.dendrogram(sch.linkage(array, method='ward'))
     plt.title('Dendrogram')
     plt.xlabel('Customers')
@@ -27,3 +28,4 @@ if __name__ == "__main__":
     #extracting the right amount of data
     X = X[:, [3,4]]
     DendogramMethod(X)
+
