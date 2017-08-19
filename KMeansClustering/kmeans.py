@@ -18,9 +18,12 @@ def ElbowMethod(array):
         kmeans = KMeans(n_clusters=i, init="k-means++", max_iter=300, n_init=10)
         kmeans.fit(array)
         wcss.append(kmeans.inertia_)
-    #Plotting
-
-
+    #Plotting values of WCSS - Within Cluster Sum of Sqaures
+    plt.plot(range(1, 11), wcss)
+    plt.title('The Elbow Method')
+    plt.xlabel('Number of clusters')
+    plt.ylabel('WCSS')
+    plt.show()
 
 
 if __name__ == "__main__":
