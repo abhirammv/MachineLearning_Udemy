@@ -6,15 +6,9 @@ def read_file(file_name):
     dataset = pd.read_csv("{0}.csv".format(file_name));
     return dataset
 
-def get_InOutparams(data):
-
-    #Input:
-    X = data.iloc[:, :-1].values
-
-    #Output
-    y = data.iloc[:, -1].values
-
-    return X, y
+def getParams(data):
+    X = data.iloc[:,:].values
+    return X
 
 
 
@@ -23,6 +17,9 @@ if __name__ == "__main__":
 
     print("K Means clustering")
     data = read_file("Mall_Customers")
-    X, y = get_InOutparams(data)
+    X = getParams(data)
+    #extracting the right amount of data
+    X = X[:, [3,4]]
+
 
 
