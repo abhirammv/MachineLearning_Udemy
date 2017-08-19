@@ -25,6 +25,17 @@ def ElbowMethod(array):
     plt.ylabel('WCSS')
     plt.show()
 
+def ClusterData(array, k):
+    from sklearn.cluster import KMeans
+    kmeans = KMeans(n_clusters=k, init="k-means++")
+    cl_array = kmeans.fit_predict(array)
+    return cl_array, kmeans
+
+def Visualize(array, clusters, k_meansAlg):
+
+
+
+
 
 if __name__ == "__main__":
 
@@ -33,6 +44,13 @@ if __name__ == "__main__":
     X = getParams(data)
     #extracting the right amount of data
     X = X[:, [3,4]]
+    ElbowMethod(X)
+    k = int(input("Input the K value: "))
+    data_clusters, k_meansAlg = ClusterData(X, k)
+
+
+
+
 
 
 
