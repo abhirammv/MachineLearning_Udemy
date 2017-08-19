@@ -39,7 +39,7 @@ def visualize(array, clusters):
 
 if __name__ == "__main__":
 
-    print("K Means clustering")
+    print("Hierarchical clustering")
     data = read_file("Mall_Customers")
     X = getParams(data)
     #extracting the right amount of data
@@ -47,5 +47,5 @@ if __name__ == "__main__":
     DendogramMethod(X)
     n = int(input("Input the number of clusters: "))
     data_clusters, hc_alg = ClusterData(X, n)
-    visualize(array=X, clusters=data_clusters, hc_alg=hc_alg)
+    visualize(array=X, clusters=data_clusters)
 
