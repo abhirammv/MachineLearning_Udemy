@@ -32,8 +32,17 @@ def ClusterData(array, k):
     return cl_array, kmeans
 
 def Visualize(array, clusters, k_meansAlg):
-
-
+    plt.scatter(array[k_meansAlg == 0, 0], array[k_meansAlg == 0, 1], s=100, c='red', label='Cluster 1')
+    plt.scatter(array[k_meansAlg == 1, 0], array[k_meansAlg == 1, 1], s=100, c='blue', label='Cluster 2')
+    plt.scatter(array[k_meansAlg == 2, 0], array[k_meansAlg == 2, 1], s=100, c='green', label='Cluster 3')
+    plt.scatter(array[k_meansAlg == 3, 0], array[k_meansAlg == 3, 1], s=100, c='cyan', label='Cluster 4')
+    plt.scatter(array[k_meansAlg == 4, 0], array[k_meansAlg == 4, 1], s=100, c='magenta', label='Cluster 5')
+    plt.scatter(k_meansAlg.cluster_centers_[:, 0], k_meansAlg.cluster_centers_[:, 1], s=300, c='yellow', label='Centroids')
+    plt.title('Clusters of customers')
+    plt.xlabel('Annual Income (k$)')
+    plt.ylabel('Spending Score (1-100)')
+    plt.legend()
+    plt.show()
 
 
 
@@ -47,6 +56,7 @@ if __name__ == "__main__":
     ElbowMethod(X)
     k = int(input("Input the K value: "))
     data_clusters, k_meansAlg = ClusterData(X, k)
+
 
 
 
