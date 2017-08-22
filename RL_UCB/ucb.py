@@ -22,6 +22,9 @@ if __name__=="__main__":
         for i in range(0, d):
             if(num_times_selected[i] > 0):
                 print("do something")
+                average_reward = sum_rewards[i] / num_times_selected[i]
+                delta_i = math.sqrt(3/2 * math.log(n + 1) / num_times_selected[i])
+                upper_bound = average_reward + delta_i
             else:
                 upper_bound = 1e400
             if(upper_bound > max_upper_bound):
