@@ -7,4 +7,13 @@ def read_file(file_name):
     return dataset
 
 if __name__=="__main__":
-    print("Upper confidence bound")
+    dataset = read_file("Ads_CTR_Optimisation")
+    #There are no X and y parameters
+
+    N = 10000 #number of rounds
+    d = 10  #number of ads
+
+    num_times_selected = [0] * d
+    sum_rewards = [0] * d
+
+
