@@ -37,12 +37,12 @@ if __name__=="__main__":
         reward = dataset.values[n, ad]
         sum_rewards[ad] = sum_rewards[ad] + reward
 
-        plt.hist(ads_selected)
-        plt.title('Histogram of ads selections')
-        plt.xlabel('Ads')
-        plt.ylabel('Number of times each ad was selected')
-        plt.show()
-        plt.close()
+    plt.hist(ads_selected)
+    plt.title('Histogram of ads selections')
+    plt.xlabel('Ads')
+    plt.ylabel('Number of times each ad was selected')
+    plt.show()
+
 
 
 
